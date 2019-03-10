@@ -54,3 +54,4 @@ uid=82(www-data) gid=82(www-data) groups=82(www-data),82(www-data)
 sudo chgrp -R 82 application/
 [sudo] password for francis: 
 ```
+Note that any files created in PHP will be owned by this user.
