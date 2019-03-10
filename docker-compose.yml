@@ -1,0 +1,39 @@
+# Development settings
+#
+# Various config files exposed on the host using volume mapping rather than
+# Dockerfile ADD or COPY
+version: '2'
+
+services:
+  php-fpm:
+    build:
+      context: ./php-fpm
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+    volumes:
+      - ./application:/var/www
+      - ./php-fpm/etc:/usr/local/etc
+
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+    volumes:
+      - ./application:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/sites:/etc/nginx/sites-available
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "1080:80"
+      - "10443:443"
+    depends_on:
+      - php-fpm
+
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        MYSQL_VERSION: ${MYSQL_VERSION}
+    env_file:
+      .env
