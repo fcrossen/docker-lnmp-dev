@@ -1,5 +1,6 @@
 # docker-lnmp-dev
 A docker project for LNMP development
+This is a work in progress used for local web development only.
 ## Contents
 - Alpine/Nginx
 - PHP-FPM
