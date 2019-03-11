@@ -2,7 +2,9 @@ ARG PHP_VERSION
 
 FROM php:${PHP_VERSION}-fpm-alpine
 
-RUN chown -R www-data /var/www
+RUN chgrp -R www-data /var/www \
+    chmod -R g+w /var/www \
+    chmod -R g+s /var/www
 
 # RUN apk update && apk add --no-cache \
 #     libcurl
