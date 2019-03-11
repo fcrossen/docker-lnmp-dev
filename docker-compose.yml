@@ -13,7 +13,8 @@ services:
         ALPINE_LINUX_VERSION: ${ALPINE_LINUX_VERSION}
     volumes:
       - ./application:/var/www
-      # - ./php-fpm/etc:/usr/local/etc # try to copy before run to avoid extension not found error
+    env_file:
+      .env
 
   nginx:
     build:
@@ -22,9 +23,6 @@ services:
         NGINX_VERSION: ${NGINX_VERSION}
     volumes:
       - ./application:/var/www
-      # - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      # - ./nginx/sites:/etc/nginx/sites-available
-      # - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
       - ${HTTP_PORT_MAPPING}
       - ${HTTPS_PORT_MAPPING}
