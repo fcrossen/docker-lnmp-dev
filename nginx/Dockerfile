@@ -9,4 +9,3 @@ COPY ./conf.d /etc/nginx/conf.d
 CMD ["nginx"]
 
 EXPOSE 80 443
-
