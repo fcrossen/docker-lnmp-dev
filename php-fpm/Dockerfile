@@ -1,7 +1,7 @@
 ARG PHP_VERSION
-ARG ALPINE_VERSION
+ARG ALPINE_LINUX_VERSION
 
-FROM php:${PHP_VERSION}-fpm-alpine${ALPINE_VERSION}
+FROM php:${PHP_VERSION}-fpm-alpine${ALPINE_LINUX_VERSION}
 
 RUN chgrp -R www-data /var/www
 RUN chmod -R g+w /var/www

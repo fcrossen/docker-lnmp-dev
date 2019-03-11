@@ -10,7 +10,7 @@ services:
       context: ./php-fpm
       args:
         PHP_VERSION: ${PHP_VERSION}
-        ALPINE_VERSION: ${ALPINE_VERSION}
+        ALPINE_LINUX_VERSION: ${ALPINE_LINUX_VERSION}
     volumes:
       - ./application:/var/www
       # - ./php-fpm/etc:/usr/local/etc # try to copy before run to avoid extension not found error
